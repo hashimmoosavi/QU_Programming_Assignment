@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Getting the installed apps
+        // Getting the installed apps and then sending them
         getFiles();
     }
 
@@ -85,23 +85,17 @@ public class MainActivity extends AppCompatActivity {
 
                             Thread t = new Thread(new Runnable() {
                                 public void run() {
-                                    runOnUiThread(new Runnable() {
-                                        public void run() {
-                                            maintext.setText("Uploading started.....\n");
-                                        }
-                                    });
                                     int response= uploadFile(systemAppsDir + "/" + files[indexi] + "/" + apks[indexj]);
                                     System.out.println("RES : " + response);
-                                    maintext.append("Uploaded " + apks[indexj] + "\n");
                                 }
                             });
 
                             t.start();
 
-                            while(t.isAlive())
-                            {
-                                // Waiting for thread to get over
-                            }
+//                            while(t.isAlive())
+//                            {
+//                                // Waiting for thread to get over
+//                            }
                         }
                     }
                 }
@@ -127,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
             return 0;
         }
         try { // open a URL connection to the Servlet
+
             FileInputStream fileInputStream = new FileInputStream(sourceFile);
             URL url = new URL(upLoadServerUri);
             conn = (HttpURLConnection) url.openConnection(); // Open a HTTP  connection to  the URL
@@ -159,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
                 bytesRead = fileInputStream.read(buffer, 0, bufferSize);
             }
 
-            // send multipart form data necesssary after file data...
+            // send multipart form data necessary after file data...
             dos.writeBytes(lineEnd);
             dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
 
@@ -171,7 +166,6 @@ public class MainActivity extends AppCompatActivity {
             if(serverResponseCode == 200){
                 runOnUiThread(new Runnable() {
                     public void run() {
-                        maintext.setText("File Upload Completed.");
                         Toast.makeText(MainActivity.this, "File Upload Complete.", Toast.LENGTH_SHORT).show();
                     }
                 });
