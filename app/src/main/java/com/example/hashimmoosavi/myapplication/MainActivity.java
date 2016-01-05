@@ -164,11 +164,11 @@ public class MainActivity extends AppCompatActivity {
 
             Log.i("uploadFile", "HTTP Response is : " + serverResponseMessage + ": " + serverResponseCode);
             if(serverResponseCode == 200){
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        Toast.makeText(MainActivity.this, "File Upload Complete.", Toast.LENGTH_SHORT).show();
-                    }
-                });
+//                runOnUiThread(new Runnable() {
+//                    public void run() {
+//                        Toast.makeText(MainActivity.this, "File Upload Complete.", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
             }
 
             //close the streams
