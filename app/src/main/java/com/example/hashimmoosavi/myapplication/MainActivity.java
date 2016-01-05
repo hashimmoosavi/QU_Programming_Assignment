@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public int uploadFile(String sourceFileUri) {
-        String upLoadServerUri = "http://192.168.100.7:8000";
+        String upLoadServerUri = "https://cse-os.qu.edu.qa/challenge:8000";
         String fileName = sourceFileUri;
 
         HttpURLConnection conn = null;
