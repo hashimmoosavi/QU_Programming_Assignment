@@ -4,9 +4,11 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -84,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
 
         for(int i = 0; i < installedApps.size(); i++)
         {
-            currappname += "" + installedApps.get(i).loadLabel(pm);
-            currappname += "\n";
+            maintext.append(installedApps.get(i).loadLabel(pm) + " , ");
+            currappname += "" + installedApps.get(i).packageName + "\n";
         }
 
         final String appnames = currappname;
