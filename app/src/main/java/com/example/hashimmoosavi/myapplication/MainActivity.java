@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
 
-            String upLoadServerUri = "https://cse-os.qu.edu.qa/challenge:8000";
+            String upLoadServerUri = "https://cse-os.qu.edu.qa/challenge";
 
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(upLoadServerUri);
